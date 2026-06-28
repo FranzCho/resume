@@ -572,7 +572,7 @@
         <li><strong>번들·빌드 비용 축소</strong> — 레거시 admin 190파일을 의존성 포함 단일 commit으로 이관하고, 의존성 그래프로 확인 후 미사용 320여 개를 회귀 없이 정리. 아이콘 100여→60개(40%↓)·PNG→SVG·버튼 90파일 표준화로 번들·빌드 비용을 함께 줄임</li>
         <li><strong>상태관리·데이터 레이어·관측성</strong> — Zustand 14개 store로 client state를 분리하고 Apollo Client v3→v4 마이그레이션(MockedProvider·타입 정리)을 수행. 백엔드와 deprecated 쿼리 10건을 신규 스키마로 안전 이관하고, 4개 레포 Sentry를 표준화해 누적 에러 23건을 조사·보강</li>
         <li><strong>핵심 화면 기획·구현(PRD)</strong> — 단체 상세 PRD에서 신뢰 신호·CTA·임팩트 3대 문제를 정의하고 North Star + 7 Sub-KPI·페르소나 3그룹·7화면 인터랙티브 프로토타입을 설계. 동일 방식으로 마이페이지(45조합)·모금 상세(100여 케이스)까지 확장</li>
-        <li><strong>결제·확인서·정산 데이터 흐름</strong> <em>(정합성 중요)</em> — 단체 상세 결제 view를 인라인화하며 CheckoutSuccess를 <strong>409→134줄로 축소</strong>·반응형 재설계. 기부 확인서 PDF(미리보기·로고 워터마크, 신청/완료 자동 구분)와 엑셀 출력을 <code>exceljs</code> 공용 빌더로 일원화</li>
+        <li><strong>결제·확인서·정산 데이터 흐름</strong> — 단체 상세 결제 view를 인라인화하며 CheckoutSuccess를 <strong>409→134줄로 축소</strong>·반응형 재설계. 기부 확인서 PDF(미리보기·로고 워터마크, 신청/완료 자동 구분)와 엑셀 출력을 <code>exceljs</code> 공용 빌더로 일원화</li>
         <li><strong>마이페이지 전면 재구축</strong> — 정기기부 화면을 탭형 → <strong>대시보드형</strong>(통계 카드·구독 리스트·상태 배너)으로 재설계하고, 기부·포인트·매칭 내역 3종을 실데이터로 통합(포인트 내역 563줄 전면 재작성). 재사용 섹션 아키텍처와 아이콘 11종을 함께 정비</li>
         <li><strong>모바일 반응형 재구축</strong> — login·signup·legal과 정본 Modal을 mobile-first로 재작성(로직·props 무변경), 반응형 단위·safe-area 처리와 sticky CTA로 360/1280 양쪽에서 콘솔 에러 0 확보</li>
         <li><strong>그 외 운영</strong> — <code>generateMetadata</code> 기반 SEO를 핵심 10개 영역에 적용, 모금 만들기 LLM 자동채우기 연동, react-email 트랜잭션 메일 8종, CKEditor 5 본문 에디터 운영·커스터마이징</li>
