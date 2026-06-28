@@ -347,8 +347,9 @@
   }
   .essay-body p {
     margin-bottom: 14px;
-    text-align: justify;
+    text-align: left;
     word-break: keep-all;
+    max-width: 72ch;
     font-size: 14px;
     line-height: 1.85;
     color: var(--ink-800);
@@ -467,7 +468,10 @@
       line-height: 1.6;
       padding: 8pt 12pt;
     }
-    .career-block { page-break-inside: avoid; }
+    .career-block { page-break-inside: auto; }
+    .career-head { page-break-after: avoid; }
+    .career-block h4 { page-break-after: avoid; }
+    .career-block ul li { page-break-inside: avoid; }
     .essay-divider {
       page-break-before: always;
       margin: 0 0 6mm;
@@ -525,7 +529,7 @@
   <h2 class="section">핵심역량</h2>
   <ul class="capability">
     <li><strong>B2B Enterprise SaaS 0→1 단독 셋업</strong> — Next.js 기반 파트너 시스템(인증·세션·캠페인·계좌·정산 도메인 출시)</li>
-    <li><strong>디자인 시스템 0→1 + 토큰 거버넌스</strong> — Storybook + GitHub Pages 자동 배포 CI, AA 색 대비 97%·<code>lint:tokens</code> 0 에러 달성</li>
+    <li><strong>디자인 시스템 0→1 + 토큰 거버넌스</strong> — Storybook + GitHub Pages 자동 배포 CI, 색 대비 AA 기준 검증 · <code>lint:tokens</code> 0 에러</li>
     <li><strong>웹 퍼포먼스·번들 정돈</strong> — admin 190 files 외부 의존성 포함 단일 commit 이관, 미사용 320여 일괄 삭제, 아이콘 40% 절감, 버튼 90 files 일괄 교체</li>
     <li><strong>상태관리 server/client 분리 운영</strong> — Zustand 14 store + Apollo Client v3→v4 마이그레이션 전담(server state 동일 카테고리)</li>
     <li><strong>AI 도구 워크플로우 내재화</strong> — Claude·Gemini·Claude Code 가상 아키텍처 파트너 + 모금 만들기 화면 LLM 자동채우기 개선·연동</li>
@@ -555,31 +559,23 @@
       <h4>주요업무</h4>
       <ul>
         <li>B2C 웹앱·B2B 파트너·내부 어드민·트랜잭션 메일 <strong>4개 프로덕트 프론트엔드 단독 운영</strong></li>
-        <li><strong>기획부터 개발까지 — 기획이 가능한 프론트엔드 개발자</strong> — 명세를 받아 화면만 그리지 않고, 파트너웹·단체/모금/봉사 상세 등 핵심 화면을 <strong>문제정의·KPI(North Star)·페르소나/유저플로우·인터랙티브 프로토타입까지 직접 기획(PRD)</strong>한 뒤 그 기획안대로 개발까지 이어서 책임</li>
+        <li><strong>기획부터 개발까지 — 기획이 가능한 프론트엔드 개발자</strong> — 핵심 화면(파트너웹·단체/모금/봉사 상세)을 문제정의·KPI·유저플로우·프로토타입까지 직접 PRD로 기획하고, 그 기획안대로 개발까지 책임</li>
         <li>사용 기술: React, Next.js 15/16, TypeScript, Apollo Client v4, GraphQL, Zustand, Jotai, Tailwind CSS, Styled Components, CKEditor 5, Storybook, Sentry, Docker, react-email</li>
-        <li>프론트엔드 0→1 셋업 및 디자인 시스템 구축, PRD 정의 및 컴포넌트 설계, 세션 미들웨어 제어 및 인증·민감정보 처리, 데이터 레이어 운영 및 모니터링 체계 일원화</li>
-        <li>협업 방식: PRD 단계에서 백엔드와 GraphQL 스키마·Enum 규격 1:1 선제 조율, Figma↔코드 매핑을 단일 진실 문서(<code>DESIGN.md</code>)로 정의</li>
+        <li>협업 방식: PRD 단계에서 백엔드와 GraphQL 스키마·Enum 규격을 1:1 선제 조율, Figma↔코드 매핑을 단일 진실 문서(<code>DESIGN.md</code>)로 정의</li>
       </ul>
 
       <h4>실적 및 성과 기여도</h4>
       <ul>
-        <li><strong>B2B 파트너 인프라 0→1 셋업</strong> — Next.js 기반 파트너 전용 프론트엔드 제로베이스 아키텍처 설계, Tailwind CSS 컬러 토큰을 메인 웹앱과 결합해 멀티 레포 자산 호환성 확보, 캠페인 등록·관리 / 단체 신원 인증 / 프로필 자동 프리필 0→1 구축, Next.js 미들웨어로 세션 토큰 갱신·API 호출 가드·미인증 리다이렉트 처리, 결제 view 내 주민등록번호·카드 비밀번호 등 민감정보 입력 검증과 SSL 표기 정합성 정리, 안전한 세션 폴링 구조 확립</li>
-        <li><strong>파트너 정산(billing) 도메인 0→1 구축</strong> — 정산서 조회 탭, 정산 상세 명세 모달, 정산 엑셀 다운로드까지 기업–단체 간 정산 흐름을 API 연동과 함께 신규 구축, rememberMe 쿠키 정규화·refresh token rotation·토큰 갱신 미들웨어 단일화로 파트너 인증·세션 인프라 고도화</li>
-        <li><strong>디자인 시스템 0→1 구축 + 토큰 거버넌스</strong> — banner·button·icon·selector·table·toast 등 20여 카테고리 토큰화, Storybook + GitHub Pages 자동 배포 CI, 파트너웹 4단계 정비(DESIGN-AUDIT → 토큰 신설 → primitives → 일괄 이관)로 arbitrary 값 340여 파일 옮김, <strong>AA 색 대비 97% 준수 · <code>lint:tokens</code> 0 에러 달성</strong></li>
-        <li><strong>방대한 데이터 테이블 표준화</strong> — 공통 컴포넌트 DataTable·StatusBadge 신규 설계 후 admin2의 26개 테이블 중 22개 표준 교체, 파편화된 58건 native <code>alert()</code> → 공통 <code>showToast</code> 패턴 일괄 전환·MessageContext 제거</li>
-        <li><strong>공용 모달 Primitive·UI 컴포넌트 글로벌 승격</strong> — 페이지 전용이던 ModalShell·ModalFooter를 글로벌 primitive로 끌어올리며 <code>role=dialog</code>·<code>aria-modal</code> 시맨틱과 hex 48곳의 semantic 토큰 전환 적용, FilterDropdown·TotalCount도 공용화해 마이페이지 전반의 모달·필터·카운트 UI를 단일 표준으로 수렴</li>
-        <li><strong>웹 퍼포먼스·번들 정돈</strong> — 레거시 admin 디렉토리 190개 파일을 외부 의존성 포함 단일 commit 이관, 미사용 컴포넌트·유틸·정적 파일 약 320여 개 일괄 삭제, 카테고리별 아이콘 100여 개를 60개로 통합(40% 절감), PNG 16종 SVG 컴포넌트 전환, 버튼 시스템 FillButton 단일 표준화로 90개 파일 결합 구조 일괄 교체 → <strong>빌드 비용·번들 사이즈 동시 축소</strong></li>
-        <li><strong>상태관리 + 데이터 레이어 + 관측성</strong> — Zustand 두 레포 14개 store 분리 운영, Apollo Client v3→v4 마이그레이션 전담(MockedProvider 사양·타입 캐스팅 전수 정리), 백엔드와 deprecated GraphQL 쿼리·필드 10건 식별 후 신규 스키마 안전 이관, 4개 레포 Sentry 단일 표준화 + 누적 에러 23건 전수 조사</li>
-        <li><strong>핵심 비즈니스 PRD 작성·구현</strong> — 단체 상세 PRD(v2.0) '신뢰 신호 분산 / CTA 휘발성 / 임팩트 추상' 문제 정의, North Star + 7개 Sub-KPI 측정 사양 설계, 페르소나 3그룹 세분화, Mermaid 유저 플로우 + 7개 화면 인터랙티브 프로토타입. v2.1 보강(segmented control, dot+"+N" badge, empty state 5케이스, WCAG AA 검증). 마이페이지(45 조합)·모금 상세(100여 케이스) 동일 방식 정리</li>
-        <li><strong>결제 전환 흐름 직접 정비</strong> — 단체 상세 페이지 리뉴얼과 결제 view 인라인화, CheckoutSuccess 화면을 <strong>409줄 → 134줄로 축소</strong>하며 단일 컬럼 + lg 이상 2-col 반응형 재설계, 정기/일시 헤딩 카피 분기 및 "매월 N일 결제 예정" 부가 정보 신설</li>
-        <li><strong>마이페이지 4개 페이지 Figma 전면 재구축</strong> — 정기기부 화면을 탭 구조에서 <strong>대시보드형(헤더·통계 카드·구독 리스트·상태 배너)</strong>으로 재개발, 기부 내역(연도·유형 필터·월별 그룹·상태 뱃지·엑셀)·포인트 내역(563줄 레거시 전면 재작성)·인증 매칭 내역을 실데이터 기반으로 통합, 사이드 메뉴·ProfileCard·LevelSection/ActivitySection 등 재사용 섹션 아키텍처와 전용 아이콘 11종까지 동반 정비</li>
-        <li><strong>기부 확인서 PDF 다운로드 인프라 구축</strong> — 미리보기 모달 + 회사 로고 워터마크, 결제 완료 화면과 마이페이지 정기/일시 내역 양쪽에서 쓰는 공용 빌더(<code>downloadDonationReceipt</code>)로 일원화, 신청확인서/완료확인서를 <code>isApplication</code> 플래그로 자동 구분</li>
-        <li><strong>엑셀 내보내기 통일</strong> — SheetJS·HTML-xls로 파편화된 출력을 <code>exceljs</code> 단일 유틸(<code>downloadStyledExcel</code>)로 수렴, 헤더 음영·합계행·숫자 우측정렬 스타일을 실제 xlsx로 구현하고 기부 내역·매칭 내역을 카드 명세서 포맷으로 통일</li>
-        <li><strong>SEO 최적화</strong> — 공통 메타데이터 유틸(<code>lib/metadata.ts</code>) 설계, Next.js App Router <code>generateMetadata</code> API를 핵심 진입 경로 10개 영역 layout에 일관 적용</li>
-        <li><strong>AI 기능 연동 + AI 협업 워크플로우</strong> — 모금 만들기 LLM 자동채우기 개선·연동, Claude·Gemini·Claude Code 가상 아키텍처 파트너 + 교차 검증으로 할루시네이션·결함 리스크 통제</li>
-        <li><strong>모바일 반응형 전면 재구축</strong> — login·signup·legal 페이지와 정본 Modal primitive를 Tailwind mobile-first 구조로 재작성(로직·props 무변경), 360px gutter <code>calc(100vw - 32px)</code>·<code>dvh</code>·<code>safe-area-inset-bottom</code> sticky CTA bar, chrome-devtools 360/1280 양쪽 검증으로 콘솔 에러 0 확보</li>
-        <li><strong>트랜잭션 메일 인프라</strong> — react-email 도입으로 파편화된 알림 시스템 정비, 일시·정기 결제 완료 안내·모금 라이프사이클 8종 등 핵심 트랜잭션 메일 템플릿 작성·유지보수</li>
-        <li><strong>CKEditor 5 기반 본문 에디터 운영 및 커스터마이징</strong></li>
+        <li><strong>B2B 파트너 프론트엔드 0→1 구축</strong> — Next.js 파트너 전용 프론트엔드를 제로베이스로 설계해 캠페인·단체 신원 인증·프로필 프리필·정산(조회·명세 모달·엑셀) 도메인을 신규 출시. 세션 미들웨어(토큰 갱신·가드·리다이렉트), 결제 민감정보 검증, rememberMe·refresh token rotation으로 인증·세션 인프라를 안정화</li>
+        <li><strong>디자인 시스템 + 토큰 거버넌스</strong> — banner·button·icon 등 20여 카테고리를 토큰화하고 Storybook + GitHub Pages 자동 배포 CI를 구축. 파트너웹을 4단계(감사→토큰→primitive→이관)로 정비해 arbitrary 값 340여 파일을 토큰으로 옮기고, 색 대비 AA 기준 검증·<code>lint:tokens</code> 0 에러로 거버넌스 확립</li>
+        <li><strong>공용 컴포넌트·모달 표준화</strong> — DataTable·StatusBadge를 신규 설계해 admin2 테이블 26개 중 22개를 표준 교체, ModalShell·ModalFooter를 글로벌 primitive(<code>role=dialog</code>)로 승격. native <code>alert()</code> 58건을 <code>showToast</code>로 통일하고 hex 48곳을 semantic 토큰으로 전환해 모달·필터·카운트 UI를 일원화</li>
+        <li><strong>번들·빌드 비용 축소</strong> — 레거시 admin 190파일을 의존성 포함 단일 commit으로 이관하고, 의존성 그래프로 확인 후 미사용 320여 개를 회귀 없이 정리. 아이콘 100여→60개(40%↓)·PNG→SVG·버튼 90파일 표준화로 번들·빌드 비용을 함께 줄임</li>
+        <li><strong>상태관리·데이터 레이어·관측성</strong> — Zustand 14개 store로 client state를 분리하고 Apollo Client v3→v4 마이그레이션(MockedProvider·타입 정리)을 수행. 백엔드와 deprecated 쿼리 10건을 신규 스키마로 안전 이관하고, 4개 레포 Sentry를 표준화해 누적 에러 23건을 조사·보강</li>
+        <li><strong>핵심 화면 기획·구현(PRD)</strong> — 단체 상세 PRD에서 신뢰 신호·CTA·임팩트 3대 문제를 정의하고 North Star + 7 Sub-KPI·페르소나 3그룹·7화면 인터랙티브 프로토타입을 설계. 동일 방식으로 마이페이지(45조합)·모금 상세(100여 케이스)까지 확장</li>
+        <li><strong>결제·확인서·정산 데이터 흐름</strong> <em>(정합성 중요)</em> — 단체 상세 결제 view를 인라인화하며 CheckoutSuccess를 <strong>409→134줄로 축소</strong>·반응형 재설계. 기부 확인서 PDF(미리보기·로고 워터마크, 신청/완료 자동 구분)와 엑셀 출력을 <code>exceljs</code> 공용 빌더로 일원화</li>
+        <li><strong>마이페이지 전면 재구축</strong> — 정기기부 화면을 탭형 → <strong>대시보드형</strong>(통계 카드·구독 리스트·상태 배너)으로 재설계하고, 기부·포인트·매칭 내역 3종을 실데이터로 통합(포인트 내역 563줄 전면 재작성). 재사용 섹션 아키텍처와 아이콘 11종을 함께 정비</li>
+        <li><strong>모바일 반응형 재구축</strong> — login·signup·legal과 정본 Modal을 mobile-first로 재작성(로직·props 무변경), 반응형 단위·safe-area 처리와 sticky CTA로 360/1280 양쪽에서 콘솔 에러 0 확보</li>
+        <li><strong>그 외 운영</strong> — <code>generateMetadata</code> 기반 SEO를 핵심 10개 영역에 적용, 모금 만들기 LLM 자동채우기 연동, react-email 트랜잭션 메일 8종, CKEditor 5 본문 에디터 운영·커스터마이징</li>
       </ul>
     </div>
   </div>
