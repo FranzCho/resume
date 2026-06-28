@@ -6,12 +6,15 @@
 <title>지원서 — {{회사명}} / {{직무명}} / 조성민</title>
 <style>
   :root {
-    --indigo-50:  #eef2ff;
-    --indigo-100: #e0e7ff;
-    --indigo-500: #6366f1;
-    --indigo-600: #4f46e5;
-    --indigo-700: #4338ca;
-    --indigo-900: #312e81;
+    /* 차콜 모노톤 — 구조 요소(섹션 바·뱃지·타임라인·넘버) 공통 */
+    --indigo-50:  #f3f4f6;
+    --indigo-100: #e5e7eb;
+    --indigo-500: #374151;
+    --indigo-600: #1f2937;
+    --indigo-700: #111827;
+    --indigo-900: #0f172a;
+    /* 단일 포인트 — 강조 텍스트(em)·인용에만 절제해서 사용 */
+    --point:      #2563eb;
     --ink-900:    #0f172a;
     --ink-800:    #1f2937;
     --ink-700:    #374151;
@@ -50,7 +53,7 @@
     gap: 28px;
     align-items: center;
     padding: 40px 56px 36px;
-    background: linear-gradient(135deg, #f8f7ff 0%, #ffffff 60%);
+    background: linear-gradient(135deg, #f7f8fa 0%, #ffffff 60%);
     border-bottom: 1px solid var(--ink-200);
     border-radius: 12px 12px 0 0;
   }
@@ -58,8 +61,8 @@
     width: 150px;
     height: 190px;
     border-radius: 8px;
-    border: 2px dashed var(--indigo-500);
-    background: var(--indigo-50);
+    border: 1px solid var(--ink-200);
+    background: var(--ink-50);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -285,7 +288,7 @@
     border-radius: 50%;
   }
   .career-block ul li strong { color: var(--ink-900); font-weight: 700; }
-  .career-block ul li em { font-style: italic; color: var(--indigo-700); font-weight: 600; }
+  .career-block ul li em { font-style: italic; color: var(--point); font-weight: 600; }
   .career-block .reason {
     background: var(--ink-50);
     border-left: 3px solid var(--ink-300);
@@ -373,7 +376,7 @@
     font-weight: 800;
     font-family: 'SF Mono', Menlo, Consolas, monospace;
   }
-  em { font-style: italic; color: var(--ink-600); }
+  em { font-style: italic; color: var(--point); }
   code {
     background: var(--ink-100);
     padding: 1px 6px;
@@ -406,7 +409,7 @@
     }
     .hero-photo {
       width: 32mm; height: 40mm;
-      border: 1.2px dashed var(--ink-400);
+      border: 0.8px solid var(--ink-300);
       background: #fafafa;
       color: var(--ink-600);
       border-radius: 2mm;
@@ -498,14 +501,8 @@
 
 <!-- ============ HERO ============ -->
 <header class="hero">
-  <div class="hero-photo" aria-label="증명사진 영역">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <circle cx="12" cy="9" r="3.5"/>
-      <path d="M5.5 19c1.2-3 3.8-4.5 6.5-4.5s5.3 1.5 6.5 4.5"/>
-      <rect x="2.5" y="3.5" width="19" height="17" rx="2.5"/>
-    </svg>
-    <div class="photo-hint">증명사진</div>
-    <div class="photo-hint-sub">최종 제출 시 첨부</div>
+  <div class="hero-photo" aria-label="증명사진">
+    <img src="profile.png" alt="조성민 증명사진">
   </div>
 
   <div class="hero-main">
