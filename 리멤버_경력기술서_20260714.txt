@@ -10,7 +10,7 @@
 ▶ 디자인 시스템 구축 및 레거시·에셋 전면 최적화                  2025.05 ~ 2026.07
 
   - 레거시 코드의 사용 패턴을 먼저 읽고 점진적으로 구조를 개선하는 Bottom-up 리팩토링 주도
-  - banner·button·icon·selector·table·toast 등 20여 개 카테고리 인터페이스 토큰화 및 Storybook 플레이그라운드 + GitHub Pages 자동 배포 CI 구축
+  - banner·button·icon·selector·table·toast 등 20여 개 카테고리 인터페이스 토큰화 및 Storybook 플레이그라운드 + GitHub Pages 자동 배포 CI 구축 (공개 배포: makeyourimpactbigger.github.io/myib-app-front)
   - Figma↔코드 동기화를 위한 매핑 시스템(DESIGN.md) 도입으로 디자인-개발 공통 자산 수립
   - 공통 컴포넌트(DataTable, StatusBadge) 신규 설계로 내부 어드민(admin2) 26개 테이블 중 22개 표준 교체
   - 파편화된 native alert() 58건을 공통 showToast 패턴으로 일괄 전환, 불필요한 useMessage·MessageContext 레이어 전수 제거로 전역 상태 복잡도 정리
@@ -34,9 +34,9 @@
 
 ▶ 성능·보안·품질 최적화 (Web Vitals·의존성·런타임 안정화)        2026.06 ~ 2026.07
 
-  - Lighthouse 홈 실측 기반 성능 백로그를 P0~P3 우선순위로 수립·순차 해소
-  - LCP 개선: 홈 배너 서버 페치 전환 + 앱 SSR 게이트 복구, SSR 토큰 만료 시 배너 소실 방지 client fallback 이중화
-  - 폰트 최적화: Pretendard 2MB 정적 로드를 dynamic subset으로 전환, Google Fonts 외부 의존을 next/font self-host로 제거
+  - 프로덕션 홈 실측(네트워크 페이로드 18.5MB, LCP 리소스 로드 지연 5,050ms) 기반 성능 백로그를 P0~P3 우선순위로 수립·순차 해소
+  - LCP 개선: 앱 전체 SSR 마크업이 비어 있던 근본 원인(세션 로딩 게이트)을 추적해 서버 렌더 복구(root HTML 0자 → 95KB), 홈 배너 서버 페치·preload 전환 및 배너 소실 방지 client fallback 이중화
+  - 폰트 최적화: Pretendard 2MB(2,011KB) 정적 로드를 dynamic subset으로 전환, Google Fonts 렌더 차단 체인 680ms를 next/font self-host로 제거
   - NextAuth jwt 콜백에 만료 토큰 갱신 로직 추가 — SSR·서버 페치 401 오류 근본 수정
   - 의존성 취약점 63건 → 10건 (critical/high 전부 제거, swiper prototype pollution 등 패치) 및 eslint error 97건 → 0건 정리 (config 정비 + 조건부 useMemo 실버그 수정 동반)
 
