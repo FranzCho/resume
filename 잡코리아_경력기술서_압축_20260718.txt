@@ -1,0 +1,43 @@
+[핵심역량 요약]
+
+■ 제품 0→1 구축 — B2B 파트너 프론트엔드(인증·세션·캠페인·정산)를 제로베이스로 설계·출시한 단독 셋업 경험
+■ 기획→개발 일관 수행 — 핵심 화면을 PRD(North Star·7 Sub-KPI·인터랙티브 프로토타입)로 직접 기획하고 그대로 구현
+■ 디자인 시스템 & 토큰 거버넌스 — Storybook + GitHub Pages 자동 배포 CI, 색 대비 AA 검증, lint:tokens 0 에러, 2개 레포 토큰 집합 동기화
+■ 대규모 리팩터링 & 성능·보안 — admin 190파일 이관, 미사용 320여 개 정리, 아이콘 40% 절감, Lighthouse 실측 기반 LCP·폰트 최적화, 취약점 63→10, eslint 97→0
+■ 상태·데이터 레이어 & 관측성 — Zustand 14 store, Apollo Client v3→v4 마이그레이션 전담, Sentry 4개 레포 표준화
+■ AI 활용 개발 생산성 — Claude·Gemini·Claude Code를 아키텍처 파트너로 내재화, 제품 내 LLM 자동채우기 연동
+
+
+■ 주식회사 마이아이비 (myib)  2024.02 ~ 현재 (2년 5개월) / 개발팀 프론트엔드 엔지니어
+
+- 기부·모금·봉사 플랫폼의 B2C 웹앱, B2B 파트너, 내부 어드민, 트랜잭션 메일 4개 프로덕트 프론트엔드 단독 운영 (4개 레포 합계 약 2,700+ 커밋)
+- 기술: React, Next.js 15/16, TypeScript, Apollo Client v4, GraphQL, Zustand, Tailwind CSS, Storybook, Sentry, Docker, react-email
+
+▶ 디자인 시스템 구축·토큰 거버넌스
+- 코드 실사용처를 카테고리별로 추출하는 bottom-up으로 20여 카테고리 토큰화, Storybook + GitHub Pages 자동 배포 CI, Figma↔코드 단일 진실 문서(DESIGN.md) 수립
+- alert() 58건 → showToast 단일 패턴 일괄 전환, 어드민 테이블 26개 중 22개를 DataTable·StatusBadge로 표준 교체, native dialog 기반 Overlay 프리미티브 신설 후 29개 소비처 무중단 이관
+- 파트너웹 4단계 정비(감사→토큰→primitive→이관)로 arbitrary 값 340여 파일 토큰 이관, AA 색 대비 97%·lint:tokens 0 에러
+- 두 레포의 타이포·radius·shadow·semantic 토큰 집합을 시각 변화 0 전제로 완전 일치, baseline(ratchet) lint·CI 게이트를 양쪽에 이식해 멀티 레포 토큰 거버넌스 체계 수립
+
+▶ 성능·보안·품질 최적화
+- 프로덕션 홈 실측(페이로드 18.5MB·LCP 지연 5,050ms) 기반 P0~P3 백로그 수립, SSR 마크업이 비어 있던 근본 원인(세션 로딩 게이트)을 추적해 서버 렌더 복구(root HTML 0자→95KB)
+- 폰트 2MB → dynamic subset 전환, 렌더 차단 체인 680ms 제거, 의존성 취약점 63→10(critical/high 0), eslint error 97→0
+- 파트너웹 확장: xlsx ESM 지연 로딩으로 정산 초기 번들 축소, robots.txt·proxy 공개 경로 정리, 색 대비 AA·랜드마크 보정
+
+▶ 데이터·관측성 레이어
+- Apollo Client v3→v4 대규모 마이그레이션 전담, deprecated GraphQL 쿼리 10건 신규 스키마 안전 이관
+- GraphQL 응답 미러링 store 제거 → useQuery 단일 소스로 server/client state 경계 정리, 4개 레포 Sentry 표준화·누적 에러 23건 전수 조사·인증 헤더 PII 스크럽 통일
+
+▶ 핵심 도메인 PRD 기획·구현
+- CS 기록 기반으로 문제 정의 → North Star + 7 Sub-KPI → 7화면 인터랙티브 프로토타입 → 직접 구현하는 사이클 (단체 상세·마이페이지 45조합·모금 상세 100여 케이스)
+- 결제 완료 화면 409줄 → 134줄 재설계로 전환 흐름 정비, 봉사 상세는 시안 확정 익일 앱 구현(레거시 10파일 삭제 동반)
+- 구현 변경 로그를 당일 기획 문서에 동기화, 프론트-백엔드 스펙 차이를 갭 감사 문서로 추적, 백엔드 요청서를 TL;DR·의존관계 그래프·판정 표로 구조화
+
+▶ B2B 파트너 시스템 0→1 구축
+- Next.js 파트너 전용 프론트엔드를 제로베이스 설계·출시: 캠페인 등록·단체 신원 인증·프로필 프리필·정산(조회·상세 1차 퍼블리싱부터 구축)
+- 세션 미들웨어(토큰 갱신·가드·리다이렉트), refresh token rotation 조기 로그아웃 근본 해결, rememberMe 세션 모듈 TDD 구현
+- 결제 민감정보 입력 검증(MIME/확장자)·SSL 정합성·안전한 세션 폴링, 모바일 반응형 전면 재구축(360/1280 콘솔 에러 0)
+
+▶ 어드민·운영
+- 신규 어드민 셋업(페이지네이션·사용자 관리·엑셀), 정기기부 결제 실패 가시화, 모금 캠페인 검수·게시 게이팅 화면 신설
+- generateMetadata 기반 SEO 10개 영역 표준화, react-email 트랜잭션 메일 8종 운영
