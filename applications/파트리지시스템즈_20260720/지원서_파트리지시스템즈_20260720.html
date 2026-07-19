@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>지원서 — 파트리지시스템즈 / Front-End engineer / 조성민</title>
+<style>
+  :root {
+    /* 차콜 모노톤 — 구조 요소(섹션 바·뱃지·타임라인·넘버) 공통 */
+    --indigo-50:  #f3f4f6;
+    --indigo-100: #e5e7eb;
+    --indigo-500: #374151;
+    --indigo-600: #1f2937;
+    --indigo-700: #111827;
+    --indigo-900: #0f172a;
+    /* 단일 포인트 — 강조 텍스트(em)·인용에만 절제해서 사용 */
+    --point:      #2563eb;
+    --ink-900:    #0f172a;
+    --ink-800:    #1f2937;
+    --ink-700:    #374151;
+    --ink-600:    #4b5563;
+    --ink-500:    #6b7280;
+    --ink-400:    #9ca3af;
+    --ink-300:    #d1d5db;
+    --ink-200:    #e5e7eb;
+    --ink-100:    #f3f4f6;
+    --ink-50:     #f9fafb;
+    --canvas:     #f4f5f8;
+    --paper:      #ffffff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--canvas); }
+  body {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+                 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+    color: var(--ink-800);
+    line-height: 1.75;
+    max-width: 980px;
+    margin: 32px auto;
+    padding: 0;
+    background: var(--paper);
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(15,23,42,0.06);
+    font-size: 14.5px;
+    letter-spacing: -0.01em;
+  }
+  .page { padding: 48px 56px 60px; }
+
+  /* ---------- HERO (명함형 헤더) ---------- */
+  .hero {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 28px;
+    align-items: center;
+    padding: 40px 56px 36px;
+    background: linear-gradient(135deg, #f7f8fa 0%, #ffffff 60%);
+    border-bottom: 1px solid var(--ink-200);
+    border-radius: 12px 12px 0 0;
+  }
+  .hero-photo {
+    width: 150px;
+    height: 190px;
+    border-radius: 8px;
+    border: 1px solid var(--ink-200);
+    background: var(--ink-50);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--indigo-700);
+    font-size: 12.5px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.5;
+    overflow: hidden;
+  }
+  .hero-photo svg { width: 36px; height: 36px; margin-bottom: 8px; opacity: 0.7; }
+  .hero-photo .photo-hint { color: var(--indigo-700); }
+  .hero-photo .photo-hint-sub {
+    color: var(--ink-500);
+    font-weight: 400;
+    font-size: 11px;
+    margin-top: 4px;
+  }
+  .hero-photo img {
+    width: 100%; height: 100%;
+    object-fit: cover; border-radius: 6px;
+  }
+  .hero-main {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    min-width: 0;
+  }
+  .hero-eyebrow {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--indigo-700);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .hero-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--ink-900);
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+  .hero-title .ko { display: inline-block; }
+  .hero-title .en {
+    font-size: 15px;
+    color: var(--ink-500);
+    font-weight: 500;
+    letter-spacing: 0;
+    margin-left: 8px;
+  }
+  .hero-meta {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 24px;
+    font-size: 13px;
+  }
+  .hero-meta .item { color: var(--ink-700); }
+  .hero-meta .item b {
+    display: inline-block;
+    min-width: 56px;
+    color: var(--ink-500);
+    font-weight: 600;
+    font-size: 11.5px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-right: 8px;
+  }
+
+  /* ---------- 섹션 헤더 ---------- */
+  h2.section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink-900);
+    margin-top: 40px;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+  h2.section::before {
+    content: "";
+    display: inline-block;
+    width: 6px; height: 22px;
+    background: var(--indigo-600);
+    border-radius: 2px;
+  }
+  h2.section .section-sub {
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--ink-500);
+    margin-left: 4px;
+    letter-spacing: 0;
+  }
+  h2.section:first-child { margin-top: 0; }
+
+  /* ---------- 표 (기본정보) ---------- */
+  table.info {
+    width: 100%;
+    border-collapse: collapse;
+    border-top: 1px solid var(--ink-200);
+    border-bottom: 1px solid var(--ink-200);
+  }
+  table.info th, table.info td {
+    padding: 11px 16px;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid var(--ink-100);
+    font-size: 13.5px;
+    line-height: 1.7;
+  }
+  table.info tr:last-child th, table.info tr:last-child td { border-bottom: none; }
+  table.info th {
+    width: 130px;
+    background: var(--ink-50);
+    font-weight: 600;
+    color: var(--ink-500);
+    font-size: 12.5px;
+    letter-spacing: 0.02em;
+  }
+
+  /* ---------- 핵심역량 불릿 ---------- */
+  ul.capability {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  ul.capability li {
+    position: relative;
+    padding: 11px 14px 11px 32px;
+    background: var(--ink-50);
+    border-radius: 6px;
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: var(--ink-800);
+  }
+  ul.capability li::before {
+    content: "";
+    position: absolute;
+    left: 14px; top: 18px;
+    width: 6px; height: 6px;
+    background: var(--indigo-600);
+    border-radius: 50%;
+  }
+  ul.capability li strong { color: var(--ink-900); font-weight: 700; }
+
+  /* ---------- 경력 타임라인 ---------- */
+  .timeline {
+    border-left: 3px solid var(--indigo-100);
+    padding-left: 22px;
+    margin-left: 6px;
+  }
+  .career-block {
+    position: relative;
+    margin-bottom: 22px;
+  }
+  .career-block::before {
+    content: "";
+    position: absolute;
+    left: -29px; top: 6px;
+    width: 13px; height: 13px;
+    background: var(--paper);
+    border: 3px solid var(--indigo-600);
+    border-radius: 50%;
+  }
+  .career-head {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    margin-bottom: 14px;
+  }
+  .career-period {
+    display: inline-block;
+    background: var(--indigo-600);
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+  }
+  .career-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink-900);
+    letter-spacing: -0.01em;
+  }
+  .career-role {
+    font-size: 13px;
+    color: var(--ink-600);
+  }
+  .career-block h4 {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: var(--indigo-700);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-top: 18px;
+    margin-bottom: 8px;
+  }
+  .career-block ul {
+    list-style: none;
+    padding: 0;
+  }
+  .career-block ul li {
+    position: relative;
+    padding: 4px 0 4px 16px;
+    font-size: 13.5px;
+    line-height: 1.72;
+    color: var(--ink-800);
+  }
+  .career-block ul li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 14px;
+    width: 4px; height: 4px;
+    background: var(--ink-400);
+    border-radius: 50%;
+  }
+  .career-block ul li strong { color: var(--ink-900); font-weight: 700; }
+  .career-block ul li em { font-style: italic; color: var(--point); font-weight: 600; }
+  .career-block .reason {
+    background: var(--ink-50);
+    border-left: 3px solid var(--ink-300);
+    padding: 12px 16px;
+    border-radius: 0 6px 6px 0;
+    margin-top: 14px;
+    font-size: 13.5px;
+    color: var(--ink-700);
+    line-height: 1.7;
+  }
+  .career-block .reason strong { color: var(--ink-900); }
+
+  /* ---------- 자기소개서 ---------- */
+  .essay-divider {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 56px 0 28px;
+    color: var(--ink-900);
+  }
+  .essay-divider::before,
+  .essay-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--ink-200);
+  }
+  .essay-divider span {
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    color: var(--indigo-700);
+  }
+  .essay-block { margin-bottom: 38px; }
+  .essay-head {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .essay-num {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--indigo-600);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    font-family: 'SF Mono', Menlo, Consolas, monospace;
+  }
+  .essay-title-text {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ink-900);
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+  }
+  .essay-body p {
+    margin-bottom: 14px;
+    text-align: left;
+    word-break: keep-all;
+    max-width: 72ch;
+    font-size: 14px;
+    line-height: 1.85;
+    color: var(--ink-800);
+  }
+  .essay-body p strong { color: var(--ink-900); font-weight: 700; }
+  .essay-body .point {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin: 22px 0 8px;
+    font-weight: 700;
+    color: var(--indigo-700);
+    font-size: 14.5px;
+    letter-spacing: -0.01em;
+  }
+  .essay-body .point .point-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px; height: 24px;
+    background: var(--indigo-600);
+    color: #fff;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 800;
+    font-family: 'SF Mono', Menlo, Consolas, monospace;
+  }
+  em { font-style: italic; color: var(--point); }
+  code {
+    background: var(--ink-100);
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 12.5px;
+    font-family: 'SF Mono', Menlo, Consolas, monospace;
+    color: var(--ink-700);
+  }
+
+  /* ---------- 인쇄 (A4) ---------- */
+  @page { size: A4; margin: 14mm 16mm; }
+  @media print {
+    html, body { background: #fff; }
+    body {
+      margin: 0;
+      max-width: 100%;
+      box-shadow: none;
+      border-radius: 0;
+      font-size: 10.5pt;
+      line-height: 1.55;
+    }
+    .hero {
+      padding: 0 0 7mm;
+      background: #fff;
+      border-bottom: 1.2px solid var(--ink-300);
+      margin-bottom: 5mm;
+      grid-template-columns: 32mm 1fr;
+      gap: 7mm;
+      align-items: center;
+    }
+    .hero-photo {
+      width: 32mm; height: 40mm;
+      border: 0.8px solid var(--ink-300);
+      background: #fafafa;
+      color: var(--ink-600);
+      border-radius: 2mm;
+      font-size: 9pt;
+    }
+    .hero-photo svg { width: 8mm; height: 8mm; margin-bottom: 2mm; }
+    .hero-photo .photo-hint-sub { font-size: 8pt; }
+    .hero-eyebrow { font-size: 8.5pt; margin-bottom: 1mm; }
+    .hero-title { font-size: 18pt; }
+    .hero-title .en { font-size: 11pt; }
+    .hero-meta { font-size: 9.5pt; gap: 2mm 6mm; margin-top: 2mm; }
+    .hero-meta .item b { font-size: 8pt; min-width: 14mm; }
+    .page { padding: 0; }
+    h2.section {
+      font-size: 13pt;
+      margin-top: 8mm;
+      margin-bottom: 3mm;
+      page-break-after: avoid;
+    }
+    h2.section::before { width: 3px; height: 16px; }
+    h2.section .section-sub { font-size: 9pt; }
+    table.info th, table.info td { padding: 5pt 8pt; font-size: 9.5pt; }
+    table.info th { font-size: 8.5pt; width: 26mm; }
+    ul.capability li {
+      background: #fff;
+      border: 0.5pt solid var(--ink-300);
+      padding: 5pt 10pt 5pt 18pt;
+      font-size: 9.5pt;
+      line-height: 1.55;
+    }
+    ul.capability li::before { left: 8pt; top: 11pt; width: 4px; height: 4px; }
+    .timeline { border-left-color: var(--ink-300); padding-left: 14pt; margin-left: 4pt; }
+    .career-block::before {
+      left: -20pt; top: 4pt;
+      width: 9pt; height: 9pt;
+      border-color: var(--ink-700);
+      border-width: 2pt;
+    }
+    .career-period {
+      background: var(--ink-900);
+      color: #fff;
+      font-size: 8.5pt;
+      padding: 2pt 7pt;
+    }
+    .career-title { font-size: 11pt; }
+    .career-role { font-size: 9pt; }
+    .career-block h4 { font-size: 9pt; margin-top: 4mm; margin-bottom: 2mm; color: var(--ink-700); }
+    .career-block ul li { font-size: 9.5pt; line-height: 1.6; padding: 2pt 0 2pt 11pt; }
+    .career-block ul li::before { top: 10pt; }
+    .career-block ul li em { color: var(--ink-700); }
+    .reason {
+      background: #fafafa;
+      border-left-color: var(--ink-500);
+      font-size: 9.5pt;
+      line-height: 1.6;
+      padding: 8pt 12pt;
+    }
+    .career-block { page-break-inside: auto; }
+    .career-head { page-break-after: avoid; }
+    .career-block h4 { page-break-after: avoid; }
+    .career-block ul li { page-break-inside: avoid; }
+    .essay-divider {
+      page-break-before: always;
+      margin: 0 0 6mm;
+    }
+    .essay-divider::before, .essay-divider::after { background: var(--ink-300); }
+    .essay-divider span { font-size: 13pt; }
+    .essay-block { margin-bottom: 7mm; page-break-inside: auto; }
+    .essay-head { page-break-after: avoid; }
+    .essay-num { color: var(--ink-900); font-size: 22pt; }
+    .essay-title-text { font-size: 12pt; }
+    .essay-body p { font-size: 10pt; line-height: 1.65; margin-bottom: 3mm; orphans: 3; widows: 3; }
+    .essay-body .point { font-size: 10pt; margin: 4mm 0 2mm; color: var(--ink-900); page-break-after: avoid; }
+    .essay-body .point .point-num {
+      background: var(--ink-900);
+      color: #fff;
+      min-width: 16pt; height: 16pt;
+      font-size: 8.5pt;
+    }
+    code { background: transparent; border: 0.5pt solid var(--ink-300); font-size: 8.5pt; padding: 0 3pt; }
+  }
+
+  /* ---------- 좁은 화면 ---------- */
+  @media (max-width: 720px) {
+    .hero { grid-template-columns: 1fr; padding: 28px 24px 24px; gap: 18px; }
+    .hero-photo { width: 130px; height: 165px; margin: 0 auto; }
+    .page { padding: 28px 24px 40px; }
+    .hero-meta { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="hero-photo" aria-label="증명사진">
+    <img src="profile.png" alt="조성민 증명사진">
+  </div>
+
+  <div class="hero-main">
+    <div>
+      <div class="hero-eyebrow">Frontend Engineer · Application</div>
+      <h1 class="hero-title"><span class="ko">조성민</span><span class="en">Sung Min Cho</span></h1>
+    </div>
+    <div class="hero-meta">
+      <div class="item"><b>생년</b>1995.01.04 / 남</div>
+      <div class="item"><b>연락</b>010-3751-0001</div>
+      <div class="item"><b>이메일</b>franzzcho@gmail.com</div>
+      <div class="item"><b>주소</b>서울특별시 강남구</div>
+    </div>
+  </div>
+</header>
+
+<div class="page">
+
+  <!-- ============ 핵심역량 ============ -->
+  <h2 class="section">핵심역량</h2>
+  <ul class="capability">
+    <li><strong>제품 0→1 구축</strong> — B2B 파트너 프론트엔드(인증·세션·캠페인·정산)를 제로베이스로 설계·출시한 단독 셋업 경험</li>
+    <li><strong>기획→개발 일관 수행</strong> — 핵심 화면을 PRD(North Star·7 Sub-KPI·인터랙티브 프로토타입)로 직접 기획하고 그대로 구현하는 개발자</li>
+    <li><strong>디자인 시스템 & 토큰 거버넌스</strong> — Storybook + GitHub Pages 자동 배포 CI, 색 대비 AA 검증 · <code>lint:tokens</code> 0 에러 · 2개 레포 토큰 집합 동기화</li>
+    <li><strong>대규모 리팩터링 & 성능·보안</strong> — admin 190파일 이관·미사용 320여 정리·아이콘 40%↓, Lighthouse 실측 기반 LCP·폰트 최적화, 취약점 63→10 · eslint 97→0</li>
+    <li><strong>상태·데이터 레이어 & 관측성</strong> — Zustand 14 store · Apollo Client v3→v4 마이그레이션 · Sentry 4개 레포 표준화</li>
+    <li><strong>AI 활용 개발 생산성</strong> — Claude·Gemini·Claude Code를 아키텍처 파트너로 내재화 + 제품 내 LLM 자동채우기 연동</li>
+  </ul>
+
+  <!-- ============ 인적/학력 ============ -->
+  <h2 class="section">기본 정보</h2>
+  <table class="info">
+    <tr><th>학력</th><td>2015.03 ~ 2023.02 안양대학교 소프트웨어학과 졸업</td></tr>
+    <tr><th>해외경험</th><td><strong>뉴질랜드</strong> — 청소년기를 영어권에서 보내며 영어 의사소통·문서 작성 능력과 다국적 환경 적응력을 자연스럽게 갖추었습니다.</td></tr>
+    <tr><th>병역</th><td>2017.01 ~ 2018.10 육군 제3보병사단 만기 전역</td></tr>
+    <tr><th>보유스킬</th><td>React, Next.js 15/16, TypeScript, Apollo Client v4, GraphQL, Zustand, Tailwind CSS, Styled Components, Storybook, Sentry, Docker, CKEditor 5, react-email / AI 도구: Claude, Gemini, Claude Code, Cursor</td></tr>
+  </table>
+
+  <!-- ============ 경력 타임라인 ============ -->
+  <h2 class="section">경력사항 <span class="section-sub">총 2년 5개월</span></h2>
+
+  <div class="timeline">
+    <div class="career-block">
+      <div class="career-head">
+        <span class="career-period">2024.02 — 재직 중 · 2년 5개월</span>
+        <span class="career-title">㈜마이아이비 (myib)</span>
+        <span class="career-role">개발팀 / 프론트엔드 엔지니어</span>
+      </div>
+
+      <h4>주요업무</h4>
+      <ul>
+        <li>B2C 웹앱·B2B 파트너·내부 어드민·트랜잭션 메일 <strong>4개 프로덕트 프론트엔드 단독 운영</strong> — 4개 레포지토리 합계 약 2,700+ 커밋 기여</li>
+        <li><strong>기획부터 개발까지 — 기획이 가능한 프론트엔드 개발자</strong> — 핵심 화면(파트너웹·단체/모금/봉사 상세)을 문제정의·KPI·유저플로우·프로토타입까지 직접 PRD로 기획하고, 그 기획안대로 개발까지 책임</li>
+        <li>사용 기술: React, Next.js 15/16, TypeScript, Apollo Client v4, GraphQL, Zustand, Tailwind CSS, Styled Components, CKEditor 5, Storybook, Sentry, Docker, react-email</li>
+        <li>협업 방식: PRD 단계에서 백엔드와 GraphQL 스키마·Enum 규격을 1:1 선제 조율, Figma↔코드 매핑을 단일 진실 문서(<code>DESIGN.md</code>)로 정의</li>
+      </ul>
+
+      <h4>실적 및 성과 기여도</h4>
+      <ul>
+        <li><strong>B2B 파트너 프론트엔드 0→1 단독 구축 — 새 사용자군의 제품 표면을 혼자 열었다</strong> — Next.js 파트너 전용 프론트엔드를 제로베이스로 설계해 캠페인·단체 신원 인증·프로필 프리필·정산 도메인을 신규 출시 — 정산은 정산서 조회·상세 화면을 1차 퍼블리싱부터 구축. 세션 미들웨어(토큰 갱신·가드·리다이렉트), 결제 민감정보 검증, rememberMe·refresh token rotation으로 인증·세션 인프라까지 안정화</li>
+        <li><strong>핵심 화면을 PRD로 직접 기획하고 그대로 구현 — 기획서를 쓰는 개발자</strong> — 단체 상세 PRD에서 CS 기록을 근거로 신뢰 신호·CTA·임팩트 3대 문제를 정의하고 North Star + 7 Sub-KPI·페르소나 3그룹·7화면 인터랙티브 프로토타입을 설계, 그 기획안대로 직접 개발. 결제 view 인라인화로 CheckoutSuccess를 <strong>409→134줄로 축소</strong>하며 전환 흐름을 정비했고, 동일 방식으로 마이페이지(45조합)·모금 상세(100여 케이스)까지 확장</li>
+        <li><strong>시안→구현→문서 동기화가 한 사이클 — 기획·구현·백엔드 정합을 문서로 잠근다</strong> — 봉사 상세는 후기 자격 게이트·문의 모달까지 인터랙티브 시안으로 확정한 <strong>익일 앱 구현</strong>(레거시 10파일 삭제 동반), 참여(모금·봉사) 보드 재개발은 정렬·페이지네이션 순수 로직을 단위 테스트와 함께 분리. 구현 변경 로그를 당일 기획 문서에 되돌려 기록하고 프론트-백엔드 스펙 차이를 갭 감사 문서로 추적, 백엔드 요청서는 TL;DR·의존관계 그래프·구현/미구현 판정 표로 구조화 — 이 체계 위에서 파트너 모금 캠페인을 mock→실 GraphQL API로 전환하고 종료 사유를 실 <code>closedReason</code>으로 연결해 부정확한 일괄 표기 제거</li>
+        <li><strong>디자인 시스템 + 토큰 거버넌스 — 3개 프로덕트를 하나의 언어로 수렴</strong> — 20여 카테고리 토큰화, Storybook + GitHub Pages 자동 배포 CI 구축. 파트너웹 4단계 정비(감사→토큰→primitive→이관)로 arbitrary 값 340여 파일을 토큰으로 이관하고 색 대비 AA 검증·<code>lint:tokens</code> 0 에러 확립. DataTable·StatusBadge로 admin2 테이블 26개 중 22개 표준 교체, native <code>alert()</code> 58건을 <code>showToast</code>로 통일. 이후 B2C·파트너 두 레포의 타이포·radius·shadow·semantic 토큰 집합을 <strong>시각 변화 0을 전제로 완전 일치</strong>시키고 baseline-ratchet 방식 토큰 lint와 CI 게이트를 양쪽에 이식해 멀티 레포 토큰 거버넌스로 확장 — 신규 화면 개발의 의사결정 비용을 구조적으로 절감</li>
+        <li><strong>번들·빌드 비용 축소</strong> — 레거시 admin 190파일 의존성 포함 이관, 미사용 320여 개 회귀 없이 정리, 아이콘 100여→60개(40%↓)·PNG→SVG 전환·버튼 90파일 FillButton 단일 표준화</li>
+        <li><strong>성능·보안 기준선 확립</strong> — 프로덕션 홈 실측(네트워크 페이로드 18.5MB·LCP 리소스 로드 지연 5,050ms)으로 백로그를 세우고, 앱 전체 SSR 마크업이 비어 있던 근본 원인을 추적해 서버 렌더 복구(root HTML 0자→95KB)·LCP 배너 서버 페치·폰트 2MB→dynamic subset·렌더 차단 체인 680ms 제거. 의존성 취약점 63→10(critical/high 0)·eslint error 97→0 정리. 동일 방법론을 파트너웹에 확장 — <code>xlsx</code> ESM 지연 로딩으로 정산 초기 번들 축소, robots.txt·proxy 공개 경로 정리, 색 대비 AA·랜드마크·헤딩 위계 보정</li>
+        <li><strong>상태관리·데이터 레이어·관측성</strong> — Zustand 14개 store로 client state 분리, Apollo Client v3→v4 마이그레이션 전담, deprecated 쿼리 10건 신규 스키마 안전 이관, 4개 레포 Sentry 표준화·누적 에러 23건 전수 조사·보강·인증 헤더 PII 스크럽 규칙 양 레포 통일</li>
+        <li><strong>마이페이지 대시보드형 재구축</strong> — 정기기부 화면을 탭형에서 통계 카드·구독 리스트·상태 배너의 대시보드형으로 재설계, 기부·포인트·매칭 내역 3종 실데이터 통합(포인트 내역 563줄 재작성)</li>
+        <li><strong>결제 확인서·정산 출력 일원화</strong> — 기부 확인서 PDF(미리보기·로고 워터마크·신청/완료 자동 구분)와 엑셀 출력을 <code>exceljs</code> 공용 빌더로 통합</li>
+        <li><strong>모바일·SEO·운영</strong> — login·signup·legal과 정본 Modal을 mobile-first로 재작성해 360/1280 콘솔 에러 0 확보, <code>generateMetadata</code> SEO 10개 영역 적용, 모금 만들기 LLM 자동채우기 연동, admin2 모금 캠페인 검수·파트너별 게시 게이팅 화면 신설, react-email 트랜잭션 메일 8종, CKEditor 5 운영·커스터마이징</li>
+      </ul>
+    </div>
+  </div>
+
+
+  <!-- ============ 자기소개서 ============ -->
+  <!--
+    ⚠️ 템플릿 안내: 아래 5개 블록은 회사별로 새로 작성하는 부분이다.
+    "이력서 만들어줘" 요청 시 이 resume.html을 복사한 뒤, 각 블록의 <p> 본문만
+    해당 회사 공고에 맞게 채운다. (핵심역량·기본정보·경력 섹션은 그대로 유지)
+    작성 기준은 CLAUDE.md의 "자소서 마스터 본문" + 변수표를 따른다.
+    블록 제목(02~04)은 재사용 가능한 기본 카피이며 회사에 맞게 다듬어도 된다.
+  -->
+  <div class="essay-divider"><span>SELF-INTRODUCTION · 자기소개서</span></div>
+
+  <!-- 01 -->
+  <section class="essay-block">
+    <div class="essay-head">
+      <div class="essay-num">01</div>
+      <div class="essay-title-text">지원동기</div>
+    </div>
+    <div class="essay-body">
+      <p>지난 2년 5개월간 ㈜마이아이비에서 기부·모금·봉사 플랫폼의 프론트엔드를 담당하며, 신뢰가 흔들리는 순간 사용자가 바로 떠난다는 사실을 매일 코드로 마주했습니다. 후원금이 한 번 잘못 결제되면 사용자는 다시 돌아오지 않고, 단체가 한 번 부정확한 정보로 노출되면 플랫폼 전체에 대한 신뢰가 영향을 받습니다. 그래서 단체 상세 페이지 PRD 작성부터 디자인 시스템 토큰화, Sentry 누적 에러 전수 조사까지 화면 한 장의 가설을 정의하는 일부터 그 화면이 안정적으로 돌아가게 만드는 일까지를 한 사람이 이어서 책임지는 방식으로 일해 왔습니다.</p>
+      <p>파트리지시스템즈를 지원한 이유는 <strong>AI 시대에 폭증하는 데이터를 가볍고 빠르게 처리한다</strong>는 방향과, 그 위에서 일하는 방식이 제가 지난 2년간 스스로 만들어 온 개발 환경과 정확히 겹치기 때문입니다. 자율주행·센서 데이터의 관제와 적재 콘솔처럼 화면 한 장이 곧 데이터 신뢰의 근거가 되는 영역에서는, 제가 임팩트 도메인에서 익힌 <em>표면의 일관성과 데이터 정합성을 함께 책임지는 방식</em>이 그대로 통한다고 생각합니다.</p>
+      <p>특히 공고의 「이렇게 일합니다」에 적힌 세 가지 — 규칙의 코드화, 자동 가드로 이어지는 검증, 계획·실행·검증·회고로 이어지는 정형화된 작업 흐름 — 은 제가 이미 회사 코드베이스에서 운영하고 있는 체계입니다. 도구에 열려 있는 정도가 아니라, 에이전트가 읽는 규칙 문서와 CI 가드를 직접 설계해 그 위에서 개발해 온 사람으로서 데이터반(databahn)의 프론트엔드를 함께 만들고자 지원했습니다.</p>
+    </div>
+  </section>
+
+  <!-- 02 -->
+  <section class="essay-block">
+    <div class="essay-head">
+      <div class="essay-num">02</div>
+      <div class="essay-title-text">직무 경험 ① — 여러 앱이 공유하는 디자인 시스템을 코드에서 끌어올리다</div>
+    </div>
+    <div class="essay-body">
+      <p>myib 입사 시 코드베이스는 hex 컬러가 수백 곳에 흩어져 있고, native <code>alert()</code> 호출이 58개, 어드민 테이블은 6종이 비표준으로 반복되고 있었습니다. 하나하나 고치는 대신 반복되는 패턴을 읽어내 표준 하나로 수렴시키는 접근을 택했습니다. alert 58건은 <code>showToast</code> 단일 패턴으로 일괄 전환하며 그 아래의 useMessage·MessageContext 레이어까지 제거했고, 비표준 테이블 6종은 DataTable·StatusBadge 두 컴포넌트로 추상화해 어드민 테이블 26개 중 22개를 교체했습니다. 화면마다 제각각이던 인라인 빈 상태 13곳과 스피너 7곳도 프리미티브 3종으로 흡수했습니다.</p>
+      <p>이 추상화를 개인 습관이 아니라 <strong>여러 앱이 공유하는 시스템</strong>으로 남기는 데 집중했습니다. banner·button·icon·selector·table·toast 등 20여 카테고리를 토큰화하고, Storybook 컴포넌트 플레이그라운드를 구축해 GitHub Pages로 자동 배포되는 CI 파이프라인을 세팅했으며, Figma↔코드 매핑을 단일 진실 문서(<code>DESIGN.md</code>)로 정의해 디자이너와 매번 새로 합의하지 않아도 되게 만들었습니다. 최근에는 B2C 앱과 B2B 파트너 <strong>두 레포의 타이포·radius·shadow·semantic 토큰 집합을 시각 변화 0을 전제로 완전히 일치</strong>시키고, baseline(ratchet) 방식 토큰 lint와 CI 게이트를 양쪽에 이식했습니다. prettier·TypeScript·Tailwind·ESLint 도구 체인 버전까지 수렴시키고 cross-repo 문서 동기화 훅을 배선해, 단일 레포 거버넌스를 멀티 레포 체계로 확장했습니다.</p>
+      <p>복잡한 요구사항을 단순한 구조로 되돌린 사례로는 결제 완료 화면이 있습니다. 정기/일시 결제·매칭·영수증 분기가 뒤엉켜 409줄이 된 화면을 상태 조합부터 다시 정의해 <strong>134줄</strong>의 단순한 구조로 재설계하면서, 헤딩 카피 분기와 「매월 N일 결제 예정」 같은 정보는 오히려 늘렸습니다. <strong>임팩트</strong>는 B2C 앱·B2B 파트너·어드민 3개 프로덕트가 같은 언어로 수렴해 신규 화면 하나의 의사결정 비용이 줄어든 것이고, <strong>러닝 포인트</strong>는 복잡도를 줄이는 것과 요구사항을 줄이는 것은 전혀 다른 일이라는 점, 그리고 좋은 추상화는 새 개념을 발명하는 게 아니라 코드에 이미 반복되고 있는 패턴을 정확히 읽어내는 데서 시작한다는 점입니다. 여러 앱이 사내 디자인 시스템을 함께 쓰는 모노레포 환경에서 바로 이어 쓸 수 있는 경험이라 생각합니다.</p>
+    </div>
+  </section>
+
+  <!-- 03 -->
+  <section class="essay-block">
+    <div class="essay-head">
+      <div class="essay-num">03</div>
+      <div class="essay-title-text">직무 경험 ② — 성능 문제를 계측으로 드러내고, 근본 원인까지 내려가다</div>
+    </div>
+    <div class="essay-body">
+      <p>성능은 체감이 아니라 숫자에서 출발해야 한다고 생각합니다. 아무도 요청하지 않았지만 프로덕션 홈을 직접 실측해 <strong>네트워크 페이로드 18.5MB</strong>, <strong>LCP 리소스 로드 지연 5,050ms</strong>라는 기준선을 만들고 P0~P3 백로그를 스스로 수립했습니다. 그 과정에서 앱 전체 SSR 마크업이 비어 있던 근본 원인이 세션 로딩 게이트에 있다는 것을 추적해 서버 렌더를 <strong>root HTML 0자 → 95KB</strong>로 복구했고, LCP 배너를 서버 페치로 전환, 폰트 2MB를 dynamic subset으로, 렌더 차단 체인 680ms를 제거했습니다. 같은 방법론을 파트너웹으로 확장하며 <code>xlsx</code>를 ESM 엔트리 지연 로딩으로 전환해 정산 화면의 초기 번들을 줄였는데, 이때 bare 지연 로딩이 SSR에서 <code>require is not defined</code> 500 오류를 내는 원인까지 진단해 해결했습니다. 번들 자체도 아이콘 100여 개를 60개로(40%↓) 통합하고 PNG 16종을 SVG 컴포넌트로 전환, 미사용 컴포넌트·유틸·정적 파일 약 320여 개를 회귀 없이 정리했습니다.</p>
+      <p>장애 대응과 원인 분석도 같은 방식입니다. SSR·서버 페치에서 산발적으로 발생하던 401 오류는 재시도로 덮지 않고 NextAuth jwt 콜백의 만료 토큰 갱신 누락이라는 근본 원인을 찾아 수정했고, refresh token rotation 과정에서 새 토큰 전파가 누락돼 생기던 조기 로그아웃도 원인부터 해결한 뒤 rememberMe 세션 쿠키 정규화 모듈을 TDD로 구현했습니다. 4개 레포의 Sentry 설정을 단일 표준으로 통일하고 <strong>누적 에러 23건을 전수 조사</strong>해 글로벌 예외 처리 미비로 인한 잠재 크래시를 사전에 제거했으며, 의존성 취약점은 <strong>63건 → 10건</strong>(critical/high 전부 제거), eslint error는 <strong>97건 → 0건</strong>으로 정리했습니다.</p>
+      <p>레거시를 새 기반으로 옮길 때도 빅뱅이 아니라 안전 경로를 먼저 설계합니다. Apollo Client v3→v4 마이그레이션을 전담하며 MockedProvider 사양 변경과 타입 캐스팅 이슈를 추적해 기존 테스트의 정합성을 전수 확보하고, 서버 사양에서 제거되면 런타임 장애로 직결될 deprecated GraphQL 쿼리·필드 10건을 백엔드와 협의해 안전하게 이관했습니다. 모달 시스템은 native dialog 기반 Overlay 프리미티브를 새로 만들되 기존 ModalContainer를 어댑터로 재작성해 <strong>29개 소비처를 무중단 이관</strong>했고, 파트너웹의 arbitrary 스타일 340여 파일은 「시각 변화 0」을 게이트로 걸고 토큰 구조로 옮겼습니다. <strong>임팩트</strong>는 운영 중인 3개 프로덕트가 서비스 중단이나 시각 회귀 없이 새 기반 위로 이동한 것이고, <strong>러닝 포인트</strong>는 점진 이관의 핵심이 코드 치환이 아니라 <em>옛 코드와 새 코드가 공존해도 안전한 장치(어댑터·게이트·lint)를 먼저 만드는 일</em>이라는 것입니다.</p>
+    </div>
+  </section>
+
+  <!-- 04 -->
+  <section class="essay-block">
+    <div class="essay-head">
+      <div class="essay-num">04</div>
+      <div class="essay-title-text">일하는 방식 — AI 에이전트가 읽는 규칙과 가드를 직접 설계해 그 위에서 개발합니다</div>
+    </div>
+    <div class="essay-body">
+      <p>공고의 「AI-native 개발 문화」를 읽고 가장 먼저 든 생각은, 제가 지금 회사에서 혼자 만들어 쓰고 있는 체계와 같은 언어라는 것이었습니다. 저는 AI 코딩 에이전트를 <em>단순히 쓰는</em> 단계를 넘어, 에이전트가 안전하게 일하도록 규칙과 검증 장치를 먼저 세우는 방식으로 개발합니다.</p>
+      <p><strong>규칙의 코드화</strong> — 6개 레포를 묶은 워크스페이스 루트에 에이전트가 읽는 규칙 문서(<code>CLAUDE.md</code>·<code>AGENTS.md</code>)를 정본으로 두고, 「단순함 우선 / 임시방편 금지, 근본 원인까지 / 최소한의 영향」 같은 핵심 원칙과 force push 금지·브랜치 전략을 명문화했습니다. 성격이 다른 규칙은 문서를 분리해 폴더·네이밍·아이콘 컨벤션은 <code>docs/CONVENTIONS.md</code>, 라우팅·멀티서비스 구조는 <code>docs/ARCHITECTURE.md</code>로 관리하고, 같은 규칙이 여러 레포에 복사돼 드리프트가 생기지 않도록 <strong>「정본은 워크스페이스 한 벌, 하위 레포는 참조만」</strong>이라는 cross-repo 문서 동기화 규칙을 세웠습니다.</p>
+      <p><strong>자동 가드와 검증</strong> — 규칙이 문서로만 남으면 지켜지지 않는다고 보고, 디자인 토큰 위반을 잡는 baseline(ratchet) 방식 <code>lint:tokens</code>를 만들어 CI 게이트로 걸었습니다. 새 위반은 통과할 수 없고 기존 위반만 줄어드는 구조라, 사람이든 에이전트든 규칙을 어기면 머지 전에 걸립니다. 색 대비 AA 검증과 「시각 변화 0」 게이트도 같은 목적의 장치이고, 순수 로직(정렬·병합·페이지네이션, smartcrop focal 좌표, 세션 쿠키 Max-Age)은 단위 테스트와 함께 커밋해 회귀를 잠급니다.</p>
+      <p><strong>정형화된 흐름과 회고</strong> — 화면 작업은 매번 새로 판단하지 않도록 <code>docs/DESIGN-CHECK.md</code>라는 공통 루틴 한 벌 + 레포별 파라미터 구조로 정리했고, 세션이 끊겨도 다음 작업이 이어지도록 <code>NEXT-SESSION.md</code>와 <code>refactor-log.md</code>로 계획·진행·완료를 추적합니다. 실패에서 배운 것은 <code>docs/lessons/</code>에 회고 문서로 남깁니다 — 「CI 자동화는 영향 범위를 명시해야 한다」, 「위치를 옮긴 문서는 낡은 사실을 품고 온다」 같은 문서가 그 결과물입니다. 덕분에 대량의 레거시 타입 치환처럼 반복적이고 위험한 작업을 AI로 가속하면서도, 교차 검증 단계를 통해 할루시네이션과 잠재 결함 리스크를 통제할 수 있었습니다.</p>
+      <p>이 체계는 제가 「신중한 설계자」에 가까운 성향이기 때문에 만들어진 것이기도 합니다. 시스템 전체 구조를 먼저 조망하려다 보니 초기 설계에서 속도가 느려질 수 있는데, 규칙과 가드를 미리 세워두면 <em>그 안에서는 마음 놓고 빠르게 갈 수 있다</em>는 것을 배웠습니다. 봉사 상세 화면을 인터랙티브 시안으로 확정한 다음 날 앱에 구현하고 레거시 10개 파일을 함께 걷어낸 것도 그 위에서 가능했던 일입니다.</p>
+    </div>
+  </section>
+
+  <!-- 05 -->
+  <section class="essay-block">
+    <div class="essay-head">
+      <div class="essay-num">05</div>
+      <div class="essay-title-text">입사 후 포부</div>
+    </div>
+    <div class="essay-body">
+      <p>파트리지시스템즈에서 함께 일할 기회를 주신다면, 가장 먼저 팀의 규칙 체계와 기존 코드베이스에 형성된 맥락을 정확히 읽는 데 집중하겠습니다. FSD 아키텍처와 팀 컨벤션, 요구사항(REQ)→테스트 케이스(TC)→E2E로 이어지는 검증 루프를 먼저 몸에 익힌 뒤, 제가 검증해 온 운영 역량 — 관측성 정비, 예외 처리 보강, 성능 기준선 수립, 데이터 정합성 점검 — 부터 제 몫의 기여를 시작하겠습니다. 이후에는 사내 디자인 시스템과 공통 컴포넌트 라이브러리 영역에서, 여러 앱이 하나의 언어로 수렴하도록 만들어 본 경험을 그대로 옮겨 팀원분들의 반복 작업을 덜어내겠습니다.</p>
+      <p>솔직하게 말씀드리면 <strong>아직 직접 다뤄보지 않은 영역</strong>도 있습니다. Three.js/WebGL·Konva 기반 실시간 렌더링과 WebSocket·Protobuf 스트리밍은 제품 경험이 없습니다. 다만 성능 문제를 다루는 방식 — 체감이 아니라 실측으로 병목을 특정하고, 네트워크 페이로드·렌더 차단 체인·번들 비용을 숫자로 관리하며, 근본 원인까지 내려가는 습관 — 은 렌더링 파이프라인이 무엇이든 동일하게 적용된다고 생각하며, 대용량 데이터를 다루는 화면에서 가장 필요한 감각이라 믿습니다. 빌드 도구 역시 webpack·Turbopack 기반 Next.js에서 번들 분석과 지연 로딩을 다뤄 왔기에 Vite로의 전환은 개념적으로 같은 층위이고, Recoil은 Zustand·Apollo 캐시로 다뤄 온 상태 분리 원칙이, Playwright E2E는 단위 테스트와 CI 게이트를 직접 세워 온 경험이 진입 지점이 되리라 생각합니다. 모르는 것을 아는 척하기보다 빠르게 배워 팀의 속도에 맞추겠습니다.</p>
+      <p>청소년기를 뉴질랜드에서 보내며 영어로 읽고 쓰고 논의하는 일이 자연스러운 환경에 있었던 만큼, 글로벌 고객사 대응과 멀티테넌트 요구사항 논의에서도 주저 없이 참여하겠습니다. <strong>국내 유일의 피지컬 AI 데이터옵스 플랫폼을 만든다</strong>는 목표는 결코 혼자서 이룰 수 없다고 믿습니다. 팀원들과 긴밀히 협업하고 끊임없이 배우며, 파트리지시스템즈가 지향하는 가치를 사용자가 마주하는 화면에서 흔들리지 않는 신뢰성으로 구현해 나가는 가장 든든한 동료가 되겠습니다.</p>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
